@@ -1,0 +1,15 @@
+# Конфигурация Netlify для статического сайта + serverless-функций
+
+[build]
+  # Сайт статический — отдельной сборки не требуется.
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # Node 18+ даёт глобальный fetch, который использует функция submit.js
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
